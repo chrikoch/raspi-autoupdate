@@ -1,7 +1,6 @@
 #/bin/bash
 
 source functions.sh
-check_dependencies
 
 #set default
 configfile="config"
