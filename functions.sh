@@ -19,6 +19,14 @@ function print_devices {
 function notify {
   TITLE=$1
   MSG=$2
-  curl --header "Access-Token: ${PUSHBULLET_TOKEN}" --header 'Content-Type: application/json' -d "{\"type\":\"note\",\"device_iden\":\"${PUSHBULLET_DEVICE}\",\"title\":\"${TITLE}\",\"body\":\"${MSG}\"}" https://api.pushbullet.com/v2/pushes
+  curl --header "Access-Token: ${PUSHBULLET_TOKEN}" --header 'Content-Type: application/json' -d "{\"type\":\"note\",\"device_iden\":\"${PUSHBULLET_DEVICE}\",\"title\":\"${TITLE}\",\"body\":\"${MSG}\"}" https://api.pushbullet.com/v2/pushes 1>>/dev/null 2>>/dev/null 
 
+}
+
+
+function msg_and_exit {
+  MSG=$1
+  echo $MSG
+  notify "raspi autoupdate error" "${MSG}"
+  exit 1
 }
