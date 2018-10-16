@@ -14,3 +14,11 @@ function print_devices {
   curl -s --header "Access-Token: ${PUSHBULLET_TOKEN}" https://api.pushbullet.com/v2/devices | jq '.devices[] | "Device <" + .nickname + "> has iden <" + .iden + ">"'
 
 }
+
+
+function notify {
+  TITLE=$1
+  MSG=$2
+  curl --header "Access-Token: ${PUSHBULLET_TOKEN}" --header 'Content-Type: application/json' -d "{\"type\":\"note\",\"device_iden\":\"${PUSHBULLET_DEVICE}\",\"title\":\"${TITLE}\",\"body\":\"${MSG}\"}" https://api.pushbullet.com/v2/pushes
+
+}
