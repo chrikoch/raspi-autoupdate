@@ -1,9 +1,9 @@
-#/bin/bash
+#!/bin/bash
 
-source functions.sh
+source ./functions.sh
 
 #set default
-configfile="config"
+configfile="./config"
 
 listdevices=0
 
