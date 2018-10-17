@@ -34,15 +34,26 @@ fi
 #we want to know wheter updates have been installed, so check for currently installed packages:
 PKG_HASH_BEFORE=`apt list --installed 2>/dev/null| sha1sum`
 
-echo ${PKG_HASH_BEFORE}
-
-update_output=`apt-get update 2>&1`
+update_output=`apt-get -q update 2>&1`
 if [ $? -ne 0 ]
 then
   msg_and_exit "ERROR updating package lists. Need root access? ${update_output}"
 fi
 
 
+upgrade_output=`apt-get -qy upgrade 2>&1`
+if [ $? -ne 0 ]
+then
+  msg_and_exit "ERROR upgrading packages. Need root access? ${upgrade_output}"
+fi
 
-notify "Toller Titel" "Ich bin ein Test"
+echo ${upgrade_output}
 
+PKG_HASH_AFTER=`apt list --installed 2>/dev/null| sha1sum`
+if [ "${PKG_HASH_BEFORE}" != "${PKG_HASH_AFTER}" ]
+then
+  echo "some packages have been updated!"
+  #TODO notify with output!
+fi
+
+#TODO Check for reboot 
