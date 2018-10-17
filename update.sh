@@ -2,6 +2,9 @@
 
 source ./functions.sh
 
+check_dependencies
+
+
 #set default
 configfile="./config"
 
@@ -33,10 +36,10 @@ PKG_HASH_BEFORE=`apt list --installed 2>/dev/null| sha1sum`
 
 echo ${PKG_HASH_BEFORE}
 
-apt-get update
+update_output=`apt-get update 2>&1`
 if [ $? -ne 0 ]
 then
-  msg_and_exit "ERROR updating package lists. Need root access?"
+  msg_and_exit "ERROR updating package lists. Need root access? ${update_output}"
 fi
 
 
