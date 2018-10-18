@@ -27,7 +27,7 @@ As you might have noticed, the config file is also a bash script. So you can run
   - Every message to your pushbullet device has a title. This is the prefix of the title.
 
 ## obtain pushbullet device iden ##
-Simply run
+Make sure you have a valid pushbullet access token in your config. Then simply run
 
     ./update.sh -l
 
