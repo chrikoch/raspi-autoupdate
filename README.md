@@ -14,14 +14,14 @@ Example:
     PUSHBULLET_DEVICE="42"
     NOTIFY_TITLE_PREFIX="`hostname` update"
 
-As you might have noticed, the config file is also a bash script. So you can you every kind of scripting you want to, to fill the parameters.
+As you might have noticed, the config file is also a bash script. So you can run every kind of scripting you want to, to fill the parameters.
 
 - PUSHBULLET\_TOKEN
- - This is the pushbullet access token. Create yours at the pushbullet [account page](https://www.pushbullet.com/#settings/account).
+  - This is the pushbullet access token. Create yours at the pushbullet [account page](https://www.pushbullet.com/#settings/account).
 - PUSHBULLET\_DEVICE
- - The iden of the pushbullet device you want to get notified. See below for instructions on how to obtain this. 
+  - The iden of the pushbullet device you want to get notified. See below for instructions on how to obtain this. 
 - NOTIFY\_TITLE\_PREFIX
- - Every message to your pushbullet device has a title. This is the prefix of the title.
+  - Every message to your pushbullet device has a title. This is the prefix of the title.
 
 ## obtain pushbullet device iden ##
 Simply run
