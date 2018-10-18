@@ -4,7 +4,7 @@ This script is intended to automate package updates on raspbian. Probably it als
 It pushes information about changes it made to a pushbullet device.
 
 # Prerequisites #
-"jq" has to be installed.
+"jq" and "curl" have to be installed.
 
 # Usage #
 ## configuration ##
