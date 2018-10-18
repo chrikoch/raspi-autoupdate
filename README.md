@@ -1,5 +1,5 @@
 # raspi-autoupdate #
-This script is intended to automate package updates on raspbian. Probably it also works with most other debian-based distors.
+This script is intended to automate package updates on raspbian. Probably it also works with most other debian-based distros.
 
 It pushes information about changes it made to a pushbullet device.
 
