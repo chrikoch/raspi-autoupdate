@@ -3,6 +3,9 @@ This script is intended to automate package updates on raspbian. Probably it als
 
 It pushes information about changes it made to a pushbullet device.
 
+# Prerequisites #
+"jq" has to be installed.
+
 # Usage #
 ## configuration ##
 Place your config in an extra file, e.g. "config" (which is the default).
