@@ -53,7 +53,11 @@ PKG_HASH_AFTER=`apt list --installed 2>/dev/null| sha1sum`
 if [ "${PKG_HASH_BEFORE}" != "${PKG_HASH_AFTER}" ]
 then
   echo "some packages have been updated!"
-  #TODO notify with output!
+  notify "Update successfull. ${upgrade_output}"
 fi
 
-#TODO Check for reboot 
+
+if [ -e /var/run/reboot-required ]
+then
+  notify "Needs reboot!!!"
+fi
