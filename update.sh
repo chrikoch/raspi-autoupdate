@@ -9,8 +9,9 @@ check_dependencies
 configfile="./config"
 
 listdevices=0
+verbose=0
 
-while getopts "c:l" optname
+while getopts "c:lv" optname
 do
   case "$optname" in
     "c")
@@ -19,17 +20,30 @@ do
     "l")
       listdevices=1
       ;;
+    "v")
+      verbose=1
+      ;;
   esac
 done
 
 source ${configfile}
+
+
+if [ ${verbose} -eq 1 ]
+then
+  debug_out="/dev/stdout"
+else
+  debug_out="/dev/null"
+fi
+
+date >> ${debug_out}
+
 
 if [ ${listdevices} -eq 1  ]
 then
   print_devices
   exit
 fi
-
 
 #we want to know wheter updates have been installed, so check for currently installed packages:
 PKG_HASH_BEFORE=`apt list --installed 2>/dev/null| sha1sum`

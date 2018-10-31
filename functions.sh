@@ -19,7 +19,7 @@ function print_devices {
 function notify_raw {
   TITLE=$1
   MSG=`echo $2 | jq -R .`
-  curl --header "Access-Token: ${PUSHBULLET_TOKEN}" --header 'Content-Type: application/json' -d "{\"type\":\"note\",\"device_iden\":\"${PUSHBULLET_DEVICE}\",\"title\":\"${TITLE}\",\"body\":${MSG}}" https://api.pushbullet.com/v2/pushes 1>>/dev/null 2>>/dev/null 
+  curl --header "Access-Token: ${PUSHBULLET_TOKEN}" --header 'Content-Type: application/json' -d "{\"type\":\"note\",\"device_iden\":\"${PUSHBULLET_DEVICE}\",\"title\":\"${TITLE}\",\"body\":${MSG}}" https://api.pushbullet.com/v2/pushes 1>>${debug_out} 2>>${debug_out} 
 
 }
 
