@@ -41,3 +41,4 @@ To run the script and perform the package updates run:
 
 If -c is ommited, "./config" is assumed to be the config file.
 
+-r performs an automatic reboot if needed.
