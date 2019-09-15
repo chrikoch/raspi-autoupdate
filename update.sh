@@ -10,8 +10,9 @@ configfile="./config"
 
 listdevices=0
 verbose=0
+auto_reboot=0
 
-while getopts "c:lv" optname
+while getopts "c:lrv" optname
 do
   case "$optname" in
     "c")
@@ -19,6 +20,9 @@ do
       ;;
     "l")
       listdevices=1
+      ;;
+    "r")
+      auto_reboot=1
       ;;
     "v")
       verbose=1
@@ -73,5 +77,11 @@ fi
 
 if [ -e /var/run/reboot-required ]
 then
-  notify "Needs reboot!!!"
+  if [ ${auto_reboot} -ne 1 ]
+  then
+    notify "Needs reboot!!!"
+  else
+    notify "Rebooting"
+    reboot
+  fi
 fi
