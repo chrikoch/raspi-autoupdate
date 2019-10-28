@@ -59,7 +59,7 @@ then
 fi
 
 
-upgrade_output=`apt-get -qy upgrade 2>&1`
+upgrade_output=`apt-get -qy --with-new-pkgs upgrade 2>&1`
 if [ $? -ne 0 ]
 then
   msg_and_exit "ERROR upgrading packages. Need root access? ${upgrade_output}"
