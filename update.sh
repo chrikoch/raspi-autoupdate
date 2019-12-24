@@ -74,14 +74,5 @@ then
   notify "Update successfull. ${upgrade_output}"
 fi
 
-
-if [ -e /var/run/reboot-required ]
-then
-  if [ ${auto_reboot} -ne 1 ]
-  then
-    notify "Needs reboot!!!"
-  else
-    notify "Rebooting"
-    reboot
-  fi
-fi
+#restart/reboot if needed
+needrestart -b -r a
