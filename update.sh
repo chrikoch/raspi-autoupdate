@@ -11,8 +11,9 @@ configfile="./config"
 listdevices=0
 verbose=0
 auto_reboot=0
+old_remove=0
 
-while getopts "c:lrv" optname
+while getopts "c:lrvo" optname
 do
   case "$optname" in
     "c")
@@ -26,6 +27,9 @@ do
       ;;
     "v")
       verbose=1
+      ;;
+    "o")
+      old_remove=1
       ;;
   esac
 done
@@ -73,6 +77,21 @@ then
   echo "some packages have been updated!"
   notify "Update successfull. ${upgrade_output}"
 fi
+
+
+if [ ${old_remove} -eq 1 ]
+then
+  remove_output=`apt-get -qy autoremove 2>&1`
+ 
+  PKG_HASH_AFTER_REMOVE=`apt list --installed 2>/dev/null| sha1sum`
+  if [ "${PKG_HASH_AFTER}" != "${PKG_HASH_AFTER_REMOVE}" ]
+  then
+    echo "some unused packages have been automatically removed!"
+    notify "Unused packages automatically removed. ${remove_output}"
+  fi
+fi
+
+
 
 
 if [ -e /var/run/reboot-required ]
