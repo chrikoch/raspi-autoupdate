@@ -92,15 +92,8 @@ then
 fi
 
 
-
-
-if [ -e /var/run/reboot-required ]
+#restart/reboot if needed
+if [ ${auto_reboot} -eq 1 ]
 then
-  if [ ${auto_reboot} -ne 1 ]
-  then
-    notify "Needs reboot!!!"
-  else
-    notify "Rebooting"
-    reboot
-  fi
+  needrestart -b -r a
 fi
